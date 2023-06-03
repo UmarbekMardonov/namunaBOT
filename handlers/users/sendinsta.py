@@ -14,11 +14,13 @@ async def send_media_insta(message: types.Message):
         await message.answer("Bu link orqali hech narsa topilmadi 😔 \n @yukla_video_1_bot")
     else:
         if data['type'] == 'video':
-            await bot.send_video(chat_id=message.from_user.id, video=data['media'], caption='@yukla_video_1_bot')
+            await bot.send_video(chat_id=message.from_user.id, video=data['media'],
+                                 caption='<a href="https://t.me/@yukla_video_1_bot">Video Yukla Bot</a>',
+                                 parse_mode='HTML')
         elif data['type'] == 'image':
-            await message.answer_photo(photo=data['media'])
+            await bot.send_photo(chat_id=message.from_user, photo=data['media'], caption='@yukla_video_1_bot')
         elif data['type'] == 'carousel':
             for i in data['media']:
-                await message.answer_document(document=data['media'])
+                await bot.send_document(chat_id=message.from_user, document=data['media'], caption='@yukla_video_1_bot')
         else:
             await message.answer("Bu link orqali hech narsa topilmadi 😔 \n @yukla_video_1_bot")

@@ -14,14 +14,11 @@ async def send_media_insta(message: types.Message):
         await message.answer("Bu link orqali hech narsa topilmadi 😔 \n @yukla_video_1_bot")
     else:
         if data['type'] == 'video':
-            video = InputMediaVideo(data['video'],caption="@yukla_video_1_bot")
-            await message.answer_media_group(media=[video])
+            await message.answer_video(video=data['media'])
         elif data['type'] == 'image':
-            image = InputMediaVideo(data['image'], caption="@yukla_video_1_bot")
-            await message.answer_media_group(media=[image])
+            await message.answer_photo(photo=data['media'])
         elif data['type'] == 'carousel':
             for i in data['media']:
-                i = InputMediaVideo(data['carousel'], caption="@yukla_video_1_bot")
-                await message.answer_media_group(media=[i])
+                await message.answer_document(document=data['media'])
         else:
             await message.answer("Bu link orqali hech narsa topilmadi 😔 \n @yukla_video_1_bot")

@@ -4,7 +4,7 @@ from aiogram.dispatcher.filters import Text
 from insta import instadownloader
 
 
-@dp.message_handler(Text(startswith='https://instagram.com/'))
+@dp.message_handler(Text(startswith='https://www.instagram.com/'))
 async def send_media_insta(message: types.Message):
     link = message.text
     data = instadownloader(link=link)

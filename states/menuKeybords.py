@@ -6,6 +6,7 @@ menu = ReplyKeyboardMarkup(
             KeyboardButton(text="O'zbek"),
             KeyboardButton(text="English"),
             KeyboardButton(text="Русский"),
-        ]
-    ]
+        ],
+    ],
+    resize_keyboard=True
 )

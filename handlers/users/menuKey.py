@@ -6,4 +6,4 @@ from loader import dp
 
 @dp.message_handler(Command("lang"))
 async def show_menu(message: Message):
-    await message.answer(reply_markup=menu)
+    await message.answer("Tilni tanlang",reply_markup=menu)

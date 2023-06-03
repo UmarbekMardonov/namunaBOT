@@ -12,16 +12,16 @@ async def show_menu(message: Message):
 @dp.message_handler(text="O'zbek 🇺🇿")
 async def link_send(message: Message):
     await message.answer("Men ishlashim uchun menga Instagram, YouTube va TikTok dan "
-                         "video link yuboring")
+                         "video link yuboring", reply_markup=ReplyKeyboardRemove())
 
 
 @dp.message_handler(text="English 🇬🇧")
 async def link_send2(message: Message):
     await message.answer("From Instagram, YouTube and TikTok send a video link"
-                         "for me to work")
+                         " for me to work",  reply_markup=ReplyKeyboardRemove())
 
 
 @dp.message_handler(text="Русский 🇷🇺")
 async def link_send3(message: Message):
     await message.answer("Из Instagram, YouTube и TikTok отправить ссылку на видео"
-                         "мне на работу")
+                         " мне на работу",  reply_markup=ReplyKeyboardRemove())

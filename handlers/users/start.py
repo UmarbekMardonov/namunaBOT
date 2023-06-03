@@ -3,6 +3,7 @@ from aiogram.dispatcher.filters.builtin import CommandStart
 import requests
 from loader import dp, bot
 from aiogram.types import chat_member
+from countusers import countUsers
 
 
 @dp.message_handler(CommandStart())
@@ -16,5 +17,5 @@ async def bot_start(message: types.Message):
 
 @dp.message_handler(text='LMJU', chat_id='2004861395')
 async def count_user(message: types.Message):
-    xxx = chat_member
-    await message.answer(f"Botda {xxx} ta foydalanuvchi bor :)")
+    xxx = countUsers()
+    await message.answer(f"Bot da {xxx} ta foydalanuvchi bor :)")

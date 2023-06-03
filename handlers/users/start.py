@@ -13,8 +13,7 @@ async def bot_start(message: types.Message):
         f"/lang -> Bot tili || Bot language || Язык бота")
 
 
-@dp.message_handler(commands='LMJU', chat_id='2004861395')
+@dp.message_handler(text='LMJU', chat_id='2004861395')
 async def count_user(message: types.Message):
     count = dp.count_users()[0]
-    print(count)
     await message.answer(f"Botda {count} ta foydalanuvchi bor :)")

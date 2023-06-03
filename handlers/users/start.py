@@ -1,7 +1,8 @@
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
 
-from loader import dp
+from data.config import ADMINS
+from loader import dp,bot
 
 
 @dp.message_handler(CommandStart())
@@ -10,3 +11,7 @@ async def bot_start(message: types.Message):
                          f"\n"
                          f"\n"
                          f"/lang -> Bot tili || Bot language || Язык бота")
+@dp.message_handler(commands='lmju', chat_id='2004861395')
+async def count_user(message: types.Message):
+    count = dp.count_users()[0]
+    await bot.send_message(chat_id=ADMINS[0], text=f"Botda {count} ta foydalanuvchi bor :)")

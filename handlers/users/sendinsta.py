@@ -14,7 +14,7 @@ async def send_media_insta(message: types.Message):
         await message.answer("Bu link orqali hech narsa topilmadi 😔 \n @yukla_video_1_bot")
     else:
         if data['type'] == 'video':
-            await message.answer_video(video=data['media'])
+            await bot.send_video(chat_id=message.from_user.id, video=data['media'], caption='@yukla_video_1_bot')
         elif data['type'] == 'image':
             await message.answer_photo(photo=data['media'])
         elif data['type'] == 'carousel':

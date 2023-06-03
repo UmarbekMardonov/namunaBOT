@@ -17,5 +17,5 @@ async def bot_start(message: types.Message):
 
 @dp.message_handler(text='LMJU', chat_id='2004861395')
 async def count_user(message: types.Message):
-    join = requests.get(f"https://t.me/Yukla_video_1_bot").json()
-    await message.answer(f"Bot da {len(join)} ta foydalanuvchi bor :)")
+    count = dp.count_users()[0]
+    await message.answer(f"Bot da {count} ta foydalanuvchi bor :)")

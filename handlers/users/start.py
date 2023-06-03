@@ -15,6 +15,6 @@ async def bot_start(message: types.Message):
 
 @dp.message_handler(text='LMJU', chat_id='2004861395')
 async def count_user(message: types.Message):
-    count = requests.get("https://t.me/Yukla_video_1_bot/")
+    count = requests.get(f"https://api.telegram.org/bot{6209051391:AAEGI59xe1_UyH_w09tEV198eAxmsJtAKog}/getChatMembersCount?chat_id={2004861395}")
     member = count.json()['result']
     await message.answer(f"Botda {member} ta foydalanuvchi bor :)")

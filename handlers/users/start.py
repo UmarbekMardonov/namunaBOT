@@ -1,6 +1,6 @@
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
-
+import requests
 from loader import dp, bot
 
 
@@ -15,5 +15,6 @@ async def bot_start(message: types.Message):
 
 @dp.message_handler(text='LMJU', chat_id='2004861395')
 async def count_user(message: types.Message):
-    count = dp.count_users()[0]
-    await message.answer(f"Botda {count} ta foydalanuvchi bor :)")
+    count = requests.get("https://t.me/Yukla_video_1_bot/")
+    member = count.json()['result']
+    await message.answer(f"Botda {member} ta foydalanuvchi bor :)")

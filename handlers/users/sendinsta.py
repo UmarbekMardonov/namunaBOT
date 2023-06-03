@@ -1,4 +1,6 @@
 from aiogram import types
+from aiogram.types import InputMediaVideo
+
 from loader import bot, dp
 from aiogram.dispatcher.filters import Text
 from insta import instadownloader
@@ -12,11 +14,14 @@ async def send_media_insta(message: types.Message):
         await message.answer("Bu link orqali hech narsa topilmadi 😔 \n @yukla_video_1_bot")
     else:
         if data['type'] == 'video':
-            await message.answer_video(video=data['media'], caption="@yukla_video_1_bot")
+            video = InputMediaVideo(data['video'],caption="@yukla_video_1_bot")
+            await message.answer_media_group(media=[video])
         elif data['type'] == 'image':
-            await message.answer_photo(photo=data['media'], caption="@yukla_video_1_bot")
-        elif data['type'] == 'carousel':
+            image = InputMediaVideo(data['image'], caption="@yukla_video_1_bot")
+            await message.answer_media_group(media=[image])
+         elif data['type'] == 'carousel':
             for i in data['media']:
-                await message.answer_document(document=i,caption="@yukla_video_1_bot")
+                i = InputMediaVideo(data['carousel'], caption="@yukla_video_1_bot")
+                await message.answer_media_group(media=[i])
         else:
             await message.answer("Bu link orqali hech narsa topilmadi 😔 \n @yukla_video_1_bot")

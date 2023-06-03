@@ -16,12 +16,12 @@ async def link_send(message: Message):
 
 
 @dp.message_handler(text="English")
-async def link_send(message: Message):
+async def link_send2(message: Message):
     await message.answer("From Instagram, YouTube and TikTok send a video link"
                          "for me to work")
 
 
 @dp.message_handler(text="Русский")
-async def link_send(message: Message):
+async def link_send3(message: Message):
     await message.answer("Из Instagram, YouTube и TikTok отправить ссылку на видео"
                          "мне на работу")

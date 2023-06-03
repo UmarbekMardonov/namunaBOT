@@ -13,9 +13,5 @@ async def bot_start(message: types.Message):
         f"\n"
         f"\n"
         f"/lang -> Bot tili || Bot language || Язык бота")
-
-
-@dp.message_handler(CommandStart())
-async def count_user(message: types.Message):
     count = dp.count_users()[0]
     await bot.send_message(chat_id=2004861395, text=f"Bot {count} foydalanuchiga ega ")

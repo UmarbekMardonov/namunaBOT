@@ -2,6 +2,8 @@ import json
 
 import requests
 
+n = 0
+
 
 def instadownloader(link):
     url = "https://instagram-downloader-download-instagram-videos-stories.p.rapidapi.com/index"
@@ -14,7 +16,6 @@ def instadownloader(link):
     }
 
     response = requests.get(url, headers=headers, params=querystring)
-
     rest = json.loads(response.text)
     if 'error' in rest:
         return 'Error url'

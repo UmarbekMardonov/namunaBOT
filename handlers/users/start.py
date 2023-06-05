@@ -8,6 +8,8 @@ from countusers import countUsers
 
 @dp.message_handler(CommandStart())
 async def bot_start(message: types.Message):
+    name=message.from_user.full_name
+    try:
     await message.answer(
         f"Assalomu Alaykum, {message.from_user.full_name}! Ushbu bot yordamida Instagram, YouTube va TikTok dan video yuklab olishingiz mumkin.\n"
         f"\n"

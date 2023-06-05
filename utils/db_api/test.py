@@ -1,1 +1,0 @@
-from insta import instadownloader

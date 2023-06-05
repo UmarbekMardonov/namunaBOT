@@ -5,8 +5,6 @@ import requests
 
 from data.config import ADMINS
 from loader import dp, bot, db
-from aiogram.types import chat_member
-from countusers import countUsers
 
 
 @dp.message_handler(CommandStart())

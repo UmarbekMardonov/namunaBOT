@@ -1,19 +1,27 @@
+import asyncpg
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
 import requests
-from loader import dp, bot
+
+from data.config import ADMINS
+from loader import dp, bot, db
 from aiogram.types import chat_member
 from countusers import countUsers
 
 
 @dp.message_handler(CommandStart())
 async def bot_start(message: types.Message):
-    name=message.from_user.full_name
     try:
+        user = await db.add_user(telegram_id=message.from_user.id,
+                                 full_name=message.from_user.full_name,
+                                 username=message.from_user.username)
+    except asyncpg.exceptions.UniqueViolationError:
+        user = await db.select_user(telegram_id=message.from_user.id)
     await message.answer(
-        f"Assalomu Alaykum, {message.from_user.full_name}! Ushbu bot yordamida Instagram, YouTube va TikTok dan video yuklab olishingiz mumkin.\n"
+        f"Assalomu Alaykum, {message.from_user.full_name}! Ushbu bot yordamida Instagram dan video va rasm yuklab olishingiz mumkin.\n"
         f"\n"
         f"\n"
         f"/lang -> Bot tili || Bot language || Язык бота")
-    count = dp.count_users()[0]
-    await bot.send_message(chat_id=2004861395, text=f"Bot {count} foydalanuchiga ega ")
+    count = await db.count_users()
+    msg = f"{user[1]} bazaga qo'shildi. \n Bazada {count} ta foydalanuvchi bor :)"
+    await bot.send_message(chat_id=ADMINS, text=msg)

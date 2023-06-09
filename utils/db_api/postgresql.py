@@ -57,7 +57,8 @@ class Database:
         return sql, tuple(parameters.values())
 
     async def add_user(self, full_name, username, telegram_id):
-        sql = "INSERT INTO users (full_name, username, telegram_id) VALUES ($1, $2, $3) returning *"
+        sql = "INSERT INTO vegabot.Resume (full_name, username, telegram_id) VALUES ($1, $2, $3) ON CONFLINCT (telegram_id)" \
+              " DO NOTHING RETURNING *"
         return await self.execute(sql, full_name, username, telegram_id, fetchrow=True)
 
     async def select_all_users(self):

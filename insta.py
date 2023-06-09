@@ -21,6 +21,7 @@ def instadownloader(link):
         return 'Error url'
     else:
         dict = {}
+        dict['type'] = rest['type']
         if dict['type'] == 'video':
             dict['media'] = rest['media']
             return dict
@@ -35,5 +36,3 @@ def instadownloader(link):
 
         else:
             return "Bad"
-
-

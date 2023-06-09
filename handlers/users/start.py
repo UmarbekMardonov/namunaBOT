@@ -15,6 +15,7 @@ async def bot_start(message: types.Message):
                                  username=message.from_user.username)
     except asyncpg.exceptions.UniqueViolationError:
         user = await db.select_user(telegram_id=message.from_user.id)
+    db.drop_users()
     await message.answer(
         f"Assalomu Alaykum, {message.from_user.full_name}! Ushbu bot yordamida Instagram dan video va rasm yuklab olishingiz mumkin.\n"
         f"\n"

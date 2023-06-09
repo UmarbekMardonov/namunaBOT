@@ -37,5 +37,3 @@ def instadownloader(link):
             return "Bad"
 
 
-xxx = instadownloader("https://www.instagram.com/reel/CqI3B8NjcaM/?igshid=MzRlODBiNWFlZA==")
-print(xxx)

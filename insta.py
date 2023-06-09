@@ -21,18 +21,22 @@ def instadownloader(link):
         return 'Error url'
     else:
         dict = {}
-        dict['type'] = rest['type']
-        if dict['type'] == 'video':
+        if rest['Type'] == 'Post-Video':
+            dict['type'] = 'video'
             dict['media'] = rest['media']
             return dict
 
-        elif dict['type'] == 'image':
+        elif rest['Type'] == 'Post-Image':
+            dict['type'] = 'image'
             dict['media'] = rest['media']
             return dict
 
-        elif dict['type'] == 'carousel':
+        elif rest['Type'] == 'Carousel':
+            dict['type'] = 'carousel'
             dict['media'] = rest['media']
             return dict
 
         else:
             return "Bad"
+
+

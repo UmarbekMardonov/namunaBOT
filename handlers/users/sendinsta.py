@@ -19,12 +19,12 @@ async def send_media_insta(message: types.Message):
                                  caption=link1,
                                  parse_mode='HTML')
         elif data['type'] == 'image':
-            await bot.send_photo(chat_id=message.from_user, photo=data['media'],
+            await bot.send_photo(chat_id=message.from_user.id, photo=data['media'],
                                  caption=link1,
                                  parse_mode='HTML')
         elif data['type'] == 'carousel':
             for i in data['media']:
-                await bot.send_document(chat_id=message.from_user, document=data['media'],
+                await bot.send_document(chat_id=message.from_user.id, document=data['media'],
                                         caption=link1,
                                         parse_mode='HTML')
         else:

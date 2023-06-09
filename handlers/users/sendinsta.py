@@ -1,9 +1,8 @@
 from aiogram import types
-from aiogram.types import InputMediaVideo
-
-from loader import bot, dp
 from aiogram.dispatcher.filters import Text
+from aiogram.types import ChatActions
 from insta import instadownloader
+from loader import bot, dp
 
 
 @dp.message_handler(Text(startswith='https://www.instagram.com/'))
@@ -15,6 +14,7 @@ async def send_media_insta(message: types.Message):
         await message.answer("Bu link orqali hech narsa topilmadi 😔 ")
     else:
         if data['type'] == 'video':
+            await bot.send_chat_action(chat_id=message.from_user.id, action=ChatActions.UPLOAD_VIDEO)
             await bot.send_video(chat_id=message.from_user.id, video=data['media'],
                                  caption=link1,
                                  parse_mode='HTML')

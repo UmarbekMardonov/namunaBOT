@@ -3,3 +3,4 @@ environs~=8.0.0
 requests~=2.31.0
 db~=0.1.1
 asyncpg~=0.27.0
+telegram~=0.0.1

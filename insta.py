@@ -15,7 +15,7 @@ def instadownloader(link):
         "X-RapidAPI-Host": "instagram-downloader-download-instagram-videos-stories.p.rapidapi.com"
     }
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.request("GET", url, headers=headers, params=querystring)
     rest = json.loads(response.text)
     if 'error' in rest:
         return 'Error url'
@@ -38,5 +38,3 @@ def instadownloader(link):
 
         else:
             return "Bad"
-
-

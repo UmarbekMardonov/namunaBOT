@@ -9,7 +9,7 @@ from insta import instadownloader
 @dp.message_handler(Text(startswith='https://www.instagram.com/'))
 async def send_media_insta(message: types.Message):
     link = message.text
-    link1 = '<a href="https://t.me/Yukla_video_1_bot/">Video Yukla Bot</a>'
+    link1 = '<a href="https://t.me/Yukla_video_1_bot/">Video Yukla Bot</a> orqali yuklab olindi'
     data = instadownloader(link=link)
     if data == 'Bad':
         await message.answer("Bu link orqali hech narsa topilmadi 😔 ")

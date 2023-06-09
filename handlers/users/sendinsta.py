@@ -31,7 +31,7 @@ async def send_media_insta(message: types.Message):
             xxx = await message.answer(text='⌛️')
             await bot.send_chat_action(chat_id=message.from_user.id, action=ChatActions.UPLOAD_PHOTO)
             for i in data['media']:
-                await bot.send_document(chat_id=message.from_user.id, document=data['media'],
+                await bot.send_document(chat_id=message.from_user.id, document=i,
                                         caption=link1,
                                         parse_mode='HTML')
                 await xxx.delete()

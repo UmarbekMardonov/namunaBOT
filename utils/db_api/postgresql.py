@@ -22,7 +22,7 @@ class Database:
     async def execute(self, command, *args, fetch: bool = False,
                       fetchval: bool = False,
                       fetchrow: bool = False,
-                      exucute: bool = False
+                      execute: bool = False
                       ):
         async with self.pool.acquire() as connection:
             connection: Connection
@@ -33,7 +33,7 @@ class Database:
                     result = await connection.fetchval(command, *args)
                 elif fetchrow:
                     result = await connection.fetchrow(command, *args)
-                elif exucute:
+                elif execute:
                     result = await connection.execute(command, *args)
             return result
 
@@ -46,7 +46,7 @@ class Database:
         telegram_id BIGINT NOT NULL UNIQUE
         );
         """
-        await self.execute(sql, exucute=True)
+        await self.execute(sql, execute=True)
 
     @staticmethod
     def format_args(sql, parameters: dict):
@@ -75,10 +75,10 @@ class Database:
 
     async def update_user_username(self, username, telegram_id):
         sql = "UPDATE Users SET username=$1 WHERE telegram_id=$2"
-        return await self.execute(sql, username, telegram_id, exucute=True)
+        return await self.execute(sql, username, telegram_id, execute=True)
 
     async def delete_users(self):
-        await self.execute("DELETE FROM Users WHERE TRUE", exucute=True)
+        await self.execute("DELETE FROM Users WHERE TRUE", execute=True)
 
     async def drop_users(self):
-        await self.execute("DROP TABLE Users", exucute=True)
+        await self.execute("DROP TABLE Users", execute=True)

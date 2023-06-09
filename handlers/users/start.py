@@ -20,6 +20,8 @@ async def bot_start(message: types.Message):
         f"\n"
         f"\n"
         f"/lang -> Bot tili || Bot language || Язык бота")
+
     count = await db.count_users()
     msg = f"{user[1]} bazaga qo'shildi :). \n Bazada {count} ta foydalanuvchi bor!"
     await bot.send_message(chat_id=ADMINS, text=msg)
+

@@ -17,8 +17,8 @@ async def link_send(message: Message):
 
 @dp.message_handler(text="English 🇬🇧")
 async def link_send2(message: Message):
-    await message.answer("From Instagram, YouTube and TikTok send a video link"
-                         " for me to work",  reply_markup=ReplyKeyboardRemove())
+    await message.answer("Send me a video or photo link from Instagram"
+                         " for me to work on",  reply_markup=ReplyKeyboardRemove())
 
 
 @dp.message_handler(text="Русский 🇷🇺")

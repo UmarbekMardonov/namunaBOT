@@ -8,12 +8,12 @@ from loader import bot, dp
 @dp.message_handler(Text(startswith='https://www.instagram.com/'))
 async def send_media_insta(message: types.Message):
     link = message.text
+    xxx = await message.answer(text='⌛️')
     link1 = '🤖 <a href="https://t.me/Yukla_video_1_bot/">Video Yukla Bot</a> orqali yuklab olindi 📥'
     data = instadownloader(link=link)
     if data == 'Bad':
         await message.answer("Bu link orqali hech narsa topilmadi 😔 ")
     else:
-        xxx = await message.answer(text='⌛️')
         if data['type'] == 'video':
             await bot.send_chat_action(chat_id=message.from_user.id, action=ChatActions.UPLOAD_VIDEO)
             await bot.send_video(chat_id=message.from_user.id, video=data['media'],
@@ -34,5 +34,5 @@ async def send_media_insta(message: types.Message):
                                         parse_mode='HTML')
         else:
             await message.answer("Bu link orqali hech narsa topilmadi 😔 ")
-        await xxx.delete()
+    await xxx.delete()
 

@@ -13,27 +13,26 @@ async def send_media_insta(message: types.Message):
     if data == 'Bad':
         await message.answer("Bu link orqali hech narsa topilmadi 😔 ")
     else:
+        xxx = await message.answer(text='⌛️')
         if data['type'] == 'video':
-            xxx = await message.answer(text='⌛️')
             await bot.send_chat_action(chat_id=message.from_user.id, action=ChatActions.UPLOAD_VIDEO)
             await bot.send_video(chat_id=message.from_user.id, video=data['media'],
                                  caption=link1,
                                  parse_mode='HTML')
             await xxx.delete()
         elif data['type'] == 'image':
-            xxx = await message.answer(text='⌛️')
             await bot.send_chat_action(chat_id=message.from_user.id, action=ChatActions.UPLOAD_PHOTO)
             await bot.send_photo(chat_id=message.from_user.id, photo=data['media'],
                                  caption=link1,
                                  parse_mode='HTML')
             await xxx.delete()
         elif data['type'] == 'carousel':
-            xxx = await message.answer(text='⌛️')
             await bot.send_chat_action(chat_id=message.from_user.id, action=ChatActions.UPLOAD_PHOTO)
             for i in data['media']:
                 await bot.send_document(chat_id=message.from_user.id, document=i,
                                         caption=link1,
                                         parse_mode='HTML')
-                await xxx.delete()
         else:
             await message.answer("Bu link orqali hech narsa topilmadi 😔 ")
+        await xxx.delete()
+

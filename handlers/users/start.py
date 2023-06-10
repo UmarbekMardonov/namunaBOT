@@ -17,7 +17,7 @@ async def bot_start(message: types.Message):
         user = await db.select_user(telegram_id=message.from_user.id)
 
     await message.answer(
-        f"Assalomu Alaykum, {message.from_user.full_name}! \n Ushbu bot yordamida Instagram dan video va rasm yuklab olishingiz mumkin.")
+        f"Assalomu Alaykum, {message.from_user.full_name}! \nUshbu bot yordamida Instagram dan video va rasm yuklab olishingiz mumkin.")
 
     count = await db.count_users()
     msg = f"{user[1]} bazaga qo'shildi :). \n Bazada {count} ta foydalanuvchi bor!"

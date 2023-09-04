@@ -14,7 +14,14 @@ def youtube(link):
 
     response = requests.request("GET", url, headers=headers, params=querystring)
     rest = json.loads(response.text)
-    print(rest)
+    if rest['thumbnail']:
+        photo = rest['thumbnail'][3]
+    elif rest['formats'][2]:
+        video720 = rest['formats'][2]
+    elif rest['formats'][1]:
+        video360 = rest['formats'][1]
+    elif rest['formats'][0]:
+        video144 = rest['formats'][0]
 
 
 #youtube("6sJKTljo_G8")

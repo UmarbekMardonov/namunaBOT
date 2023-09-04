@@ -9,7 +9,7 @@ from loader import bot, dp
 @dp.message_handler(Text(startswith='https://www.instagram.com/'))
 async def send_media_insta(message: types.Message):
     link = message.text
-    xxx = await message.answer(text='⌛️')
+    xxx = await message.answer(text='Yuklanmoqda 🔍')
     link1 = '🤖 <a href="https://t.me/Yukla_video_1_bot/">Video Yukla Bot</a> orqali yuklab olindi 📥'
     data = instadownloader(link=link)
     try:

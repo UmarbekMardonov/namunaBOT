@@ -2,8 +2,6 @@ import json
 
 import requests
 
-n = 0
-
 
 def instadownloader(link):
     url = "https://instagram-downloader-download-instagram-videos-stories.p.rapidapi.com/index"
@@ -11,7 +9,7 @@ def instadownloader(link):
     querystring = {"url": link}
 
     headers = {
-        "X-RapidAPI-Key": "e676a60da7msh9f5922426b251bcp1b2dddjsn9a86dc98b41b",
+        "X-RapidAPI-Key": "3d579d87b6msh8e40272f2bd1036p1b3e47jsnc7a47101736b",
         "X-RapidAPI-Host": "instagram-downloader-download-instagram-videos-stories.p.rapidapi.com"
     }
 
@@ -21,6 +19,7 @@ def instadownloader(link):
         return 'Error url'
     else:
         dict = {}
+        dict['title'] = rest['title']
         if rest['Type'] == 'Post-Video':
             dict['type'] = 'video'
             dict['media'] = rest['media']

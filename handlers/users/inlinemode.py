@@ -2,7 +2,7 @@ from aiogram import types
 from data.courses_python import inline_results_python
 from data.courses_telegram import inline_results_telegram
 from loader import dp
-from keyboards.inline.courses import aiogram_keys, python_keys
+from keyboards.inline.courses import aiogram_keys
 
 
 @dp.inline_handler(text="python")

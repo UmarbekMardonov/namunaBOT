@@ -1,28 +1,36 @@
 import json
+
 import requests
 
 
 def youtube(link):
-    url = "https://ytstream-download-youtube-videos.p.rapidapi.com/dl"
+    if link[:27] == 'https://youtube.com/shorts/':
+        link = link[27:38]
+    if link[:17] == 'https://youtu.be/':
+        link = link[17:28]
+    url = "https://youtube-media-downloader.p.rapidapi.com/v2/video/details"
 
-    querystring = {"id": link}
+    querystring = {"videoId": link}
 
     headers = {
-        "X-RapidAPI-Key": "e676a60da7msh9f5922426b251bcp1b2dddjsn9a86dc98b41b",
-        "X-RapidAPI-Host": "ytstream-download-youtube-videos.p.rapidapi.com"
+        "X-RapidAPI-Key": "3d579d87b6msh8e40272f2bd1036p1b3e47jsnc7a47101736b",
+        "X-RapidAPI-Host": "youtube-media-downloader.p.rapidapi.com"
     }
 
-    response = requests.request("GET", url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring)
     rest = json.loads(response.text)
-    if rest['thumbnail']:
-        photo = rest['thumbnail'][3]
-    elif rest['formats'][2]:
-        video720 = rest['formats'][2]
-    elif rest['formats'][1]:
-        video360 = rest['formats'][1]
-    elif rest['formats'][0]:
-        video144 = rest['formats'][0]
-
-
-#youtube("6sJKTljo_G8")
-youtube("hIT3gUlf9zY")
+    dict = {}
+    if rest['audios']:
+        dict['audio'] = rest['audios']['items'][0]['url']
+    dict['title'] = rest['title']
+    dict['desc'] = rest['channel']['name']
+    dict['mediaAvatar'] = rest['thumbnails'][4]['url']
+    dict['360video'] = rest['videos']['items'][0]['url']
+    dict['360videoSize'] = rest['videos']['items'][0]['sizeText']
+    dict['720video'] = rest['videos']['items'][1]['url']
+    dict['720videoSize'] = rest['videos']['items'][1]['sizeText']
+    dict['1080video'] = rest['videos']['items'][2]['url']
+    dict['1080videoSize'] = rest['videos']['items'][2]['sizeText']
+    return dict
+# youtube('https://youtube.com/shorts/7hh_mOJT6gM?si=Kyo15lhUR6CwWtq_')
+# youtube('https://youtu.be/Gs6AjGQu4DU?si=9b4DEWjTA63s4UIf')

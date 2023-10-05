@@ -1,6 +1,7 @@
 from aiogram.types import Message, CallbackQuery
 from loader import dp, bot
 
+
 @dp.callback_query_handler(text="course:aiogram")
 async def aiogram_course_inf(call: CallbackQuery):
     msg = "Ushbu darsimizda siz barcha talablarga javob beradigan, zamonaviy Telegram bot yaratishni oʻrganasiz.\n\n"

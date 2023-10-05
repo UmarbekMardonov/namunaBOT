@@ -1,4 +1,4 @@
-import math
+
 x = {'status': 'OK', 'id': 'hIT3gUlf9zY', 'title': 'ЁР-ЁР КЎРСАТУВИ ҲАҚИДА! - АБРОР МУХТОР АЛИЙ',
      'lengthSeconds': '242',
      'keywords': ['Аброр', 'Мухтор', 'Алий', 'islom.uz', 'Abror Muxtor Aliy', 'islom', 'terorizm', 'ISHID', 'SHIYA',
@@ -322,5 +322,6 @@ x = {'status': 'OK', 'id': 'hIT3gUlf9zY', 'title': 'ЁР-ЁР КЎРСАТУВИ
          'quality': 'tiny', 'projectionType': 'RECTANGULAR', 'averageBitrate': 32996,
          'audioQuality': 'AUDIO_QUALITY_ULTRALOW', 'approxDurationMs': '241741', 'audioSampleRate': '48000',
          'audioChannels': 2, 'loudnessDb': -9.59}]}
-xx = x['formats'][0]
+xx = x
+
 print(xx)

@@ -83,3 +83,20 @@ class Database:
 
     async def drop_users(self):
         await self.execute("DROP TABLE Users", execute=True)
+
+    async def create_table_saver_count(self):
+            sql = """
+            CREATE TABLE IF NOT EXISTS LikeDislike (
+                saver_count int,
+                );
+    """
+            self.execute(sql, commit=True)
+
+    async def update_reqCount(self, req_count):
+
+        sql = f"""UPDATE SaverCount SET req_count=?"""
+
+        self.execute(sql, parameters=(req_count,))
+
+    async def select_reqCount(self):
+        return self.execute(f"SELECT saver_count FROM SaverCount", fetchone=True)

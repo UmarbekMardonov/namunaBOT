@@ -5,7 +5,7 @@ from aiogram import types
 from aiogram.dispatcher.filters import Text
 from aiogram.types import ChatActions, InputFile, Message, CallbackQuery, ReplyKeyboardRemove, message
 from insta import instadownloader
-from loader import bot, dp
+from loader import bot, dp, db
 from youtube import youtube
 from tiktok import Downloads
 
@@ -25,6 +25,7 @@ async def send_media_insta(message: types.Message):
         if data == 'Bad':
             await message.answer("Bu link orqali hech narsa topilmadi 😔 ")
         else:
+
             await bot.send_chat_action(chat_id=message.from_user.id, action=ChatActions.UPLOAD_VIDEO)
             await bot.send_document(chat_id=message.from_user.id, document=media,
                                     caption=link1)

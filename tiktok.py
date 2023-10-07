@@ -8,6 +8,8 @@ import json
 
 
 def hisobot():
+    count = 0
+    return count
 
 
 

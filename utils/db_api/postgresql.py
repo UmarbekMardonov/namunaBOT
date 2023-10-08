@@ -24,6 +24,7 @@ class Database:
                       fetchrow: bool = False,
                       execute: bool = False
                       ):
+        result = None
         async with self.pool.acquire() as connection:
             connection: Connection
             async with connection.transaction():
@@ -78,19 +79,19 @@ class Database:
         sql = "UPDATE Users SET username=$1 WHERE telegram_id=$2"
         return await self.execute(sql, username, telegram_id, execute=True)
 
-    async def delete_users(self):
-        await self.execute("DELETE FROM Users WHERE TRUE", execute=True)
+    async def delete_users(self, telegram_id):
+        await self.execute("DELETE FROM Users WHERE telegram_id = ?", telegram_id)
 
     async def drop_users(self):
         await self.execute("DROP TABLE Users", execute=True)
 
     async def create_table_saver_count(self):
-            sql = """
+        sql = """
             CREATE TABLE IF NOT EXISTS LikeDislike (
                 saver_count int,
                 );
     """
-            self.execute(sql, commit=True)
+        self.execute(sql, commit=True)
 
     async def update_reqCount(self, req_count):
 
@@ -100,3 +101,9 @@ class Database:
 
     async def select_reqCount(self):
         return self.execute(f"SELECT saver_count FROM SaverCount", fetchone=True)
+
+    async def chek(self):
+        sql = '''
+        SELECT * FROM USERS WHERE telegram_id=2004861395;
+        '''
+        return await self.execute(sql, fetch=True)

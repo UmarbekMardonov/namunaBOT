@@ -4,7 +4,6 @@ main_menu_for_super_admin = InlineKeyboardMarkup(row_width=2)
 
 main_menu_for_super_admin.add(
     InlineKeyboardButton(text="📝 Reklama Jo'natish", callback_data="send_advertisement"),
-    InlineKeyboardButton(text="📊 Statistika", callback_data="statistics"),
 )
 
 main_menu_for_admin = InlineKeyboardMarkup(row_width=2)
